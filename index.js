@@ -11,12 +11,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 const dbConfig = require('./config/db.js');
 const mongoose = require('mongoose');
+const advices = require('./src/controller/Advice.js')
+const advicereply = require('./src/controller/Advicereply.js')
 
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
 mongoose.connect(dbConfig.url, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
@@ -33,3 +36,15 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
+
+ app.post('/question', advices.create); // Create a new Note
+ app.get('/question', advices.findAll); // Retrieve all Notes
+ app.get('/question/:questionId', advices.findOne);  // Retrieve a single Note with noteId
+ app.put('/question/:questionId', advices.update);  // Update a Note with noteId
+ app.delete('/question/:questionId', advices.delete);  // Delete a Note with noteId
+
+ app.post('/advices', advicereply.create); // Create a new Note
+ app.get('/advices', advicereply.findAll); // Retrieve all Notes
+ app.get('/advices/:adviceId', advicereply.findOne);  // Retrieve a single Note with noteId
+ app.put('/advices/:adviceId', advicereply.update);  // Update a Note with noteId
+ app.delete('/advices/:adviceId', advicereply.delete);  // Delete a Note with noteId
