@@ -82,6 +82,48 @@ function closeReply(){
   document.getElementById('adreply').style.display = 'none';
 }
 
+function postAdvice(){
+  let category = document.getElementById('cate').value;
+  let adQuestion = document.getElementById('askadv').value
+
+  let problem = {
+    category: category,
+    content: adQuestion
+  };
+  fetch('http://localhost:3000/question',{
+    headers: { 'Content-Type':'application/json'},
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(problem)
+  });
+  document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
