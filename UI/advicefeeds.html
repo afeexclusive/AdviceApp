@@ -3,12 +3,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mobile</title>
+    <title>Advice</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="w3.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
-<body style="width: 100%" onload="startTime()">
+<body style="width: 100%" onload="loadAdvice()">
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
     
     <div style="height: 100%; width: 100%; position:fixed; background-color: royalblue; overflow: auto" id="main" >
@@ -33,7 +33,20 @@
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Social</a>
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Relationship</a>
         </div>
-        <div class="w3-sand w3-border-bottom w3-padding" id="advicefeed">
+
+        <div class="w3-border-bottom w3-padding" id="advicefeed" style="width: 98%; margin:auto; background-color:white;" onclick="showReply()"></div>
+
+        <div id="adreply" class="w3-modal">
+                <div class="w3-modal-content" >
+                    <div class="w3-container">
+                            <button onclick="closeReply()" class="w3-btn w3-right w3-white" id="cls"> x </button>
+                        <p> here</p>
+
+                    </div>
+                </div>
+            </div>
+
+        <!-- <div class="w3-sand w3-border-bottom w3-padding" id="advicefeed">
             <p id="post">Love the Lord your God with all your heart and with all your Soul and Lean not on your own understanding</p>
             <div id="details">
                 <i><i class="w3-badge w3-green" id="reply">4</i>Advice</i>
@@ -74,7 +87,7 @@
                     <i><i class="w3-badge w3-green" id="reply">4</i>Advice</i>
                     <i class=" w3-right"><i class="w3-badge w3-green" id="reply">30</i>Same Here</i>
                 </div>
-        </div>
+        </div> -->
 
     </div>
     
