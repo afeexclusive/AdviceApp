@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const adviceSchema = mongoose.Schema({
+    same: String,
     parentId: String,
     category: String,
     content: String

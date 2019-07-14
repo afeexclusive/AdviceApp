@@ -12,6 +12,7 @@ exports.create = (req, res) => {
 
     // Create an Advice
     const advice = new Advice({
+        same: req.body.same || "",
         parentId: uuid.v4(),
         category: req.body.category || "Untitled Advice", 
         content: req.body.content
@@ -75,6 +76,7 @@ exports.update = (req, res) => {
     // Find advice and update it with the request body
     Advice.findByIdAndUpdate(req.params.questionId, {
         category: req.body.category || "Untitled Advice",
+        same: req.body.same,
         content: req.body.content
     }, {new: true})
     .then(advice => {

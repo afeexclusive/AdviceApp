@@ -305,5 +305,18 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     border-radius: 50%;
   }
 
-
+  #replies{
+    border-collapse: collapse;
+    width: 100%
+  }
+  
+  #replies td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #replies tr:hover {
+    background-color:  #F0F8FF;
+  }
+  
 

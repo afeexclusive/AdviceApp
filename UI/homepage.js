@@ -51,10 +51,11 @@ function changetheme(){
       let iReplyCount = document.createElement('i');
       let spanSame = document.createElement('span');
       let iSameCount = document.createElement('i');
-      let replyId = data[i]._id;
+      let replyId = data[i].parentId;
       divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
       pAdQuest.setAttribute('id', 'adquest');
       spanReply.setAttribute('id', replyId);
+      spanReply.setAttribute('onclick', 'showReply()')
       iReplyCount.setAttribute('id', 'reply');
       iReplyCount.setAttribute('class', 'w3-badge w3-green');
       spanSame.setAttribute('class', 'w3-right');
@@ -74,8 +75,23 @@ function changetheme(){
       document.getElementById('advicefeed').appendChild(divAdFeed);
     }
   }
-function showReply(){
+
+const showReply = async() => {
+  document.getElementById('replyhere'). innerHTML = ''
+  let adId = document.activeElement.id;
+  let url = 'http://localhost:3000/advices/'+ adId;
   document.getElementById('adreply').style.display = 'block';
+  const response = await fetch(url);
+  const data = await response.json();
+  let table = document.createElement('table');
+  table.setAttribute('id', 'replies');
+  let row = table.insertRow();
+  for(var i=0; i<data.length; i++){
+    let cell = row.insertCell();
+    cell.innerHTML = data[i].content
+    row = table.insertRow();
+  }
+  document.getElementById('replyhere').appendChild(table)
 }
 
 function closeReply(){
@@ -98,8 +114,6 @@ function postAdvice(){
   });
   document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice'
 }
-
-
 
 
 
