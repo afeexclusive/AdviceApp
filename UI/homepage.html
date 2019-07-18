@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mobile</title>
+    <title>Welcome Advice.org</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="w3.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -11,7 +11,7 @@
 <body style="width: 100%" onload="startTime()">
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
     
-    <div style="height: 93%; width: 100%; position:fixed; background-color: royalblue" id="main" >
+   
         <div style="width: 100%; background-color: royalblue; display: flex">
             <div class="w3-left" style="width: 70%;">
                 <!-- <p style="color:azure; margin-left: 5%; font-size: 20px" id="heading"><b>AdviceMe</b></p> -->
@@ -22,9 +22,8 @@
             </label>
             <button id="openNav" class="w3-button w3-text-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
         </div>
-        <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-blue w3-right" style="display:none" id="mySidebar">
-                <button class="w3-bar-item w3-button w3-border-bottom w3-large material-icons"
-                onclick="w3_close()">arrow_back</button>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-blue w3-right" style="display:none;" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-border-bottom w3-large material-icons" onclick="w3_close()">arrow_back</button>
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Love</a>
                 <a href="#" class="w3-bar-item w3-border-bottom  w3-button">Faith</a>
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Parenting</a>
@@ -33,30 +32,35 @@
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Social</a>
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Relationship</a>
         </div>
-        <br>
         
+        <div style="height: 93%; width: 100%; position:fixed; background-color: royalblue" id="main" >
+
         <div class="w3-card-4 w3-round-xlarge w3-center" style="width: 80%; margin: auto">
             <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
         </div>
-        
         <div id="tym" style="font-size: 20px; margin:auto; width:30%;" class="w3-black w3-center"></div>
-        <br> <br>
-        <div class="w3-card-4 w3-teal w3-round-xlarge" style="width: 80%; margin: auto; display: flex">
-            <div class="w3-pink w3-card-4" style="width:10%"></div>
-            <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Ask Advice</div>
-        </div>
-        <br>
-        <div class="w3-card-4 w3-teal w3-round-xlarge w3-center" style="width: 80%; margin: auto; display: flex">
-            <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Post Advice</div>
-            <div class="w3-pink w3-card-4" style="width:10%; left:15%;"></div>
-        </div>
-        <br>
-        <div class="w3-card-4 w3-teal w3-round-xlarge" style="width: 80%; margin: auto; display: flex">
-            <div class="w3-pink w3-card-4" style="width:10%"></div>
-            <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Categories</div>
+        <div>
+            <br> <br>
+            <div class="w3-card-4 w3-teal w3-round-xlarge" style="width: 80%; margin: auto; display: flex;">
+                <div class="w3-pink w3-card-4" style="width:10%"></div>
+                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Ask Advice</div>
+            </div>
+
+            <br>
+            <div class="w3-card-4 w3-teal w3-round-xlarge w3-center" style="width: 80%; margin: auto; display: flex;">
+                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Post Advice</div>
+                <div class="w3-pink w3-card-4" style="width:10%; left:15%;"></div>
+            </div>
+            <br>
+            <div class="w3-card-4 w3-teal w3-round-xlarge" style="width: 80%; margin: auto; display: flex;">
+                <div class="w3-pink w3-card-4" style="width:10%"></div>
+                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading">Categories</div>
+            </div>
         </div>
         
+            
     </div>
+    
     
         <footer class="w3-container w3-black w3-bottom">
              <div class="w3-container w3-brown w3-center" style="margin-bottom:2px; font-size: small; width:100%"> Disclaimer: The advices here are only the opinions of the posters and not in anyway endosed by us. Consult wisely. </div>

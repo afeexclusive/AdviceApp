@@ -43,14 +43,15 @@ app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
 
- app.post('/question', advices.create); // Create a new Note
+ app.post('/question', advices.create); // Create a new Advice
  app.get('/question', advices.findAll); // Retrieve all Notes
- app.get('/question/:questionId', advices.findOne);  // Retrieve a single Note with noteId
- app.put('/question/:questionId', advices.update);  // Update a Note with noteId
- app.delete('/question/:questionId', advices.delete);  // Delete a Note with noteId
+ app.get('/question/:questionId', advices.findOne);  // Retrieve a single Advice with adviceId
+ app.put('/question/:questionId', advices.update);  // Update a Advice with adviceId
+ app.delete('/question/:questionId', advices.delete);  // Delete a Advice with adviceId
 
- app.post('/advices', advicereply.create); // Create a new Note
+ app.post('/advices', advicereply.create); // Create a new Advice
  app.get('/advices', advicereply.findAll); // Retrieve all Notes
- app.get('/advices/:adviceId', advicereply.findOne);  // Retrieve a single Note with noteId
- app.put('/advices/:adviceId', advicereply.update);  // Update a Note with noteId
- app.delete('/advices/:adviceId', advicereply.delete);  // Delete a Note with noteId
+ app.get('/advicereply/:Id', advicereply.findReply); //Retrieve all specific advice
+ app.get('/advices/:Id', advicereply.findOne);  // Retrieve a single Advice with adviceId
+ app.put('/advices/:Id', advicereply.update);  // Update a Advice with adviceId
+ app.delete('/advices/:Id', advicereply.delete);  // Delete a Advice with adviceId

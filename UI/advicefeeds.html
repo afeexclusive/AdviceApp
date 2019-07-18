@@ -12,7 +12,8 @@
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
     
     <div style="height: 100%; width: 100%; position:fixed; background-color: royalblue; overflow: auto" id="main" >
-        <div style="width: 100%; background-color: darkblue; display: flex; position:fixed">
+    
+        <div style="width: 100%; background-color: darkblue; display: flex;"> <!--position:fixed-->
             <div class="w3-left" style="width: 70%;">
                 <p style="color:azure; margin-left: 5%; font-size: 20px" id="heading"><b>AdviceMe</b></p>
             </div>
@@ -34,22 +35,26 @@
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Relationship</a>
         </div>
 
-        <div class="w3-border-bottom w3-padding" id="advicefeed" style="width: 98%; margin:auto; background-color:white;"></div>
+        <div class="w3-border-bottom w3-padding" id="advicefeed" style="width: 98%; margin:auto; background-color:white;"></div> <br>
 
         <div id="adreply" class="w3-modal">
                 <div class="w3-modal-content" >
                     <div class="w3-container">
                             <button onclick="closeReply()" class="w3-btn w3-right w3-white" id="cls"> x </button>
                         <p id="replyhere"></p>
-
-                    </div>
+                        <div style="display: flex; margin: auto">
+                        <input type="text"  id="advtext" class="w3-input w3-round-xxlarge w3-border" placeholder="What's your advice (128 chr)">
+                        <p style="width: 5px"></p>
+                        <button id="sendreply" class=" w3-btn w3-btn-floating w3-ripple w3-circle w3-teal" onclick="postAdvice()">-></button>
+                    </div> <br>
+                    <i id="parentidholder" style="display: none"></i>
                 </div>
             </div>
 
         </div>
     
         <footer class="w3-container w3-black w3-bottom"> 
-            <div class="w3-container w3-brown w3-center" style="margin-bottom:2px; font-size: small; width:100%"> Disclaimer </div>
+            <div id="dis" class="w3-container w3-brown w3-center" style="margin-bottom:2px; font-size: small; width:100%"> Disclaimer </div>
         </footer>
      
     <script src="homepage.js"></script>

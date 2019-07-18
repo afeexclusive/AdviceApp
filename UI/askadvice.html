@@ -11,7 +11,7 @@
 <body style="width: 100%">
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
     
-    <div style="height: 100%; width: 100%; position:fixed; background-color: royalblue" id="main" >
+    
         <div style="width: 100%; background-color: darkblue; display: flex">
             <div class="w3-left" style="width: 70%;">
                 <!-- <p style="color:azure; margin-left: 5%; font-size: 20px" id="heading"><b>AdviceMe</b></p> -->
@@ -33,7 +33,7 @@
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Social</a>
                 <a href="#" class="w3-bar-item w3-border-bottom w3-button">Relationship</a>
         </div>
-        <br>
+        <div style="height: 100%; width: 100%; position:fixed; background-color: royalblue" id="main" >`
         
         <div class="w3-card-4 w3-round-xlarge w3-center" style="width: 80%; margin: auto">
             <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
@@ -42,7 +42,7 @@
             <h1>Ask Advice</h1>
             <input type="text" placeholder="Category" class="w3-input" id="cate"> <br>
             <textarea name="" id="askadv" cols="30" rows="7" class="w3-input" placeholder="Question" ></textarea> <br>
-            <button class="w3-button w3-teal " onclick="postAdvice()">Submit</button>
+            <button class="w3-button w3-teal " onclick="postQuestion()">Submit</button>
             <br>
             <p></p>
         </div>

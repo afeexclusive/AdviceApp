@@ -26,6 +26,18 @@ exports.create = (req, res) => {
     });
 };
 
+// Retrieve and return specific advicereply from the database.
+exports.findReply = (req, res) => {
+    Advicereply.find({parentId:{$in:[Id = (req.params.Id)]}})
+    .then(advicereply => {
+        res.status(200).send(advicereply);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving advicereply."
+        });
+    });
+};
+
 // Retrieve and return all advicereply from the database.
 exports.findAll = (req, res) => {
     Advicereply.find()
@@ -38,27 +50,28 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single advicereply with a adviceId
+// Find a single advicereply with an Id
 exports.findOne = (req, res) => {
-    Advicereply.findById(req.params.adviceId)
+    Advicereply.findById(req.params.Id)
     .then(advicereply => {
         if(!advicereply) {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });            
         }
         res.status(200).send(advicereply);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving advicereply with id " + req.params.adviceId
+            message: "Error retrieving advicereply with id " + req.params.Id
         });
     });
 };
+
 
 
 // Update a note identified by the noteId in the request
@@ -71,47 +84,47 @@ exports.update = (req, res) => {
     }
 
     // Find advicereply and update it with the request body
-    Advicereply.findByIdAndUpdate(req.params.adviceId, {
+    Advicereply.findByIdAndUpdate(req.params.Id, {
         category: req.body.category || "Untitled Advicereply",
         content: req.body.content
     }, {new: true})
     .then(advicereply => {
         if(!advicereply) {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });
         }
         res.status(200).send(advicereply);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });                
         }
         return res.status(500).send({
-            message: "Error updating advicereply with id " + req.params.adviceId
+            message: "Error updating advicereply with id " + req.params.Id
         });
     });
 };
 
 // Delete a note with the specified noteId in the request
 exports.delete = (req, res) => {
-    Advicereply.findByIdAndRemove(req.params.adviceId)
+    Advicereply.findByIdAndRemove(req.params.Id)
     .then(advicereply => {
         if(!advicereply) {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });
         }
         res.status(200).send({message: "Note deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
-                message: "Advicereply not found with id " + req.params.adviceId
+                message: "Advicereply not found with id " + req.params.Id
             });
         }
         return res.status(500).send({
-            message: "Could not delete advicereply with id " + req.params.adviceId
+            message: "Could not delete advicereply with id " + req.params.Id
         });
     });
 };
