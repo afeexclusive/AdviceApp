@@ -41,6 +41,18 @@ exports.findAll = (req, res) => {
     });
 };
 
+// Retrieve and return category based advicereply from the database.
+exports.findCate = (req, res) => {
+    Advice.find({category:{$in:[Id = (req.params.Id)]}})
+    .then(advice => {
+        res.status(200).send(advice);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving question."
+        });
+    });
+};
+
 // Find a single advice with a questionId
 exports.findOne = (req, res) => {
     Advice.findById(req.params.questionId)

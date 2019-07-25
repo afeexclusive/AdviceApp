@@ -311,7 +311,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   }
   
   #replies td {
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     padding: 8px;
   }
   
@@ -319,4 +319,64 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     background-color:  #F0F8FF;
   }
   
+.mywidth-5{width: 5%;}
+.mywidth-10{width: 10%;}
+.mywidth-15{width: 15%;}
+.mywidth-20{width: 20%;}
+.mywidth-25{width: 25%;}
+.mywidth-30{width: 30%;}
+.mywidth-35{width: 35%;}
+.mywidth-40{width: 40%;}
+.mywidth-45{width: 45%;}
+.mywidth-50{width: 50%;}
+.mywidth-55{width: 55%;}
+.mywidth-60{width: 60%;}
+.mywidth-65{width: 65%;}
+.mywidth-70{width: 70%;}
+.mywidth-75{width: 75%;}
+.mywidth-80{width: 80%;}
+.mywidth-85{width: 85%;}
+.mywidth-90{width: 90%;}
+.mywidth-95{width: 95%;}
+.mywidth-100{width: 100%;}
+  
+.myheight-5{height: 5%;}
+.myheight-10{height: 10%;}
+.myheight-15{height: 15%;}
+.myheight-20{height: 20%;}
+.myheight-25{height: 25%;}
+.myheight-30{height: 30%;}
+.myheight-35{height: 35%;}
+.myheight-40{height: 40%;}
+.myheight-45{height: 45%;}
+.myheight-50{height: 50%;}
+.myheight-55{height: 55%;}
+.myheight-60{height: 60%;}
+.myheight-65{height: 65%;}
+.myheight-70{height: 70%;}
+.myheight-75{height: 75%;}
+.myheight-80{height: 80%;}
+.myheight-85{height: 85%;}
+.myheight-90{height: 90%;}
+.myheight-95{height: 95%;}
+.myheight-100{height: 100%;}
+
+#divheading{
+  margin: auto;
+}
+
+
+
+
+  @media only screen and (min-width: 900px){
+    .bigscr{width: 35%;margin-left: 60%;top: 20%;height: 60%;border-radius: 5%;}
+    .repstn{
+      position: absolute;
+      top: -32%;
+      left: -180%;
+    }
+    
+    .todryt{width: 90%;}
+    .my-card-4,.w3-hover-shadow:hover{box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
+  }
 

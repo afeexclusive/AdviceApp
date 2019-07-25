@@ -11,13 +11,13 @@ function changetheme(){
 }
 
   function w3_open() {
-    document.getElementById("main").style.marginLeft = "0%";
+    // document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.width = "30%";
     document.getElementById("mySidebar").style.display = "block";
     document.getElementById("openNav").style.display = 'none';
   }
   function w3_close() {
-    document.getElementById("main").style.marginLeft = "0%";
+    // document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("openNav").style.display = "inline-block";
   }
@@ -40,6 +40,7 @@ function changetheme(){
 
   
   const loadAdvice = async() => {
+    document.getElementById('advicefeed').innerHTML = '';
     const response = await fetch('http://localhost:3000/question');
     const data = await response.json();
     
@@ -82,6 +83,9 @@ function changetheme(){
       iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
       iSameCount.setAttribute('style', 'border:none');
       document.getElementById('advicefeed').appendChild(divAdFeed);
+      document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
     }
   }
 
@@ -129,6 +133,7 @@ function postQuestion(){
     body: JSON.stringify(problem)
   });
   document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice'
+  // document.getElementById('msg').innerHTML = document.getElementById('cate').value;
 }
 
 function postAdvice(){
@@ -149,13 +154,161 @@ function postAdvice(){
   document.getElementById('advtext').value = '';
 }
 
+function textCase(){
+  let cateText = document.getElementById('cate').value;
+  let part1 = cateText.charAt(0).toUpperCase();
+  let part2 = cateText.slice(1);
+  document.getElementById('cate').value = part1+part2;
+  
+}
 
 
+const selectFaith = async() => {
+  document.getElementById('advicefeed').innerHTML = '';
+  const response = await fetch('http://localhost:3000/questioncat/Faith');
+  const data = await response.json();
+  for (var i=0; i<data.length; i++){
+    let divAdFeed = document.createElement('div');
+    let spanCat = document.createElement('span');
+    let pAdQuest = document.createElement('p');
+    let divAdDetails = document.createElement('div');
+    let spanReply = document.createElement('button');
+    let iReplyCount = document.createElement('button');
+    let spanSame = document.createElement('button');
+    let iSameCount = document.createElement('button');
+    let replyId = data[i].parentId;
+    divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
+    pAdQuest.setAttribute('id', 'adquest');
+    spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
+    spanReply.setAttribute('id', replyId);
+    spanReply.setAttribute('onclick', 'showReply()');
+    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('style', 'border:none');
+    iReplyCount.setAttribute('id', 'reply');
+    iReplyCount.setAttribute('class', 'w3-light-blue');
+    iReplyCount.setAttribute('style', 'border:none');
+    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('style', 'border:none');
+    spanCat.innerHTML = data[i].category;
+    pAdQuest.innerHTML = data[i].content;
+    divAdDetails.appendChild(spanReply);
+    divAdDetails.appendChild( iReplyCount);
+    divAdDetails.appendChild(spanSame);
+    divAdFeed.appendChild(spanCat)
+    divAdFeed.appendChild(pAdQuest);
+    divAdFeed.appendChild(divAdDetails);
+    // iReplyCount.innerHTML = (data.length);
+    spanReply.innerText = 'Advice';
+    spanSame.innerText = 'Same here';
+    spanSame.appendChild(iSameCount);
+    iSameCount.innerHTML = data.length;
+    iSameCount.setAttribute('id', 'same');
+    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('style', 'border:none');
+    document.getElementById('advicefeed').appendChild(divAdFeed);
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
+}
 
+const selectLove = async() => {
+  document.getElementById('advicefeed').innerHTML = '';
+  const response = await fetch('http://localhost:3000/questioncat/Love');
+  const data = await response.json();
+  for (var i=0; i<data.length; i++){
+    let divAdFeed = document.createElement('div');
+    let spanCat = document.createElement('span');
+    let pAdQuest = document.createElement('p');
+    let divAdDetails = document.createElement('div');
+    let spanReply = document.createElement('button');
+    let iReplyCount = document.createElement('button');
+    let spanSame = document.createElement('button');
+    let iSameCount = document.createElement('button');
+    let replyId = data[i].parentId;
+    divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
+    pAdQuest.setAttribute('id', 'adquest');
+    spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
+    spanReply.setAttribute('id', replyId);
+    spanReply.setAttribute('onclick', 'showReply()');
+    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('style', 'border:none');
+    iReplyCount.setAttribute('id', 'reply');
+    iReplyCount.setAttribute('class', 'w3-light-blue');
+    iReplyCount.setAttribute('style', 'border:none');
+    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('style', 'border:none');
+    spanCat.innerHTML = data[i].category;
+    pAdQuest.innerHTML = data[i].content;
+    divAdDetails.appendChild(spanReply);
+    divAdDetails.appendChild( iReplyCount);
+    divAdDetails.appendChild(spanSame);
+    divAdFeed.appendChild(spanCat)
+    divAdFeed.appendChild(pAdQuest);
+    divAdFeed.appendChild(divAdDetails);
+    // iReplyCount.innerHTML = (data.length);
+    spanReply.innerText = 'Advice';
+    spanSame.innerText = 'Same here';
+    spanSame.appendChild(iSameCount);
+    iSameCount.innerHTML = data.length;
+    iSameCount.setAttribute('id', 'same');
+    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('style', 'border:none');
+    document.getElementById('advicefeed').appendChild(divAdFeed);
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
+}
 
-
-
-
+const selectEdu = async() => {
+  document.getElementById('advicefeed').innerHTML = '';
+  const response = await fetch('http://localhost:3000/questioncat/Education');
+  const data = await response.json();
+  for (var i=0; i<data.length; i++){
+    let divAdFeed = document.createElement('div');
+    let spanCat = document.createElement('span');
+    let pAdQuest = document.createElement('p');
+    let divAdDetails = document.createElement('div');
+    let spanReply = document.createElement('button');
+    let iReplyCount = document.createElement('button');
+    let spanSame = document.createElement('button');
+    let iSameCount = document.createElement('button');
+    let replyId = data[i].parentId;
+    divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
+    pAdQuest.setAttribute('id', 'adquest');
+    spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
+    spanReply.setAttribute('id', replyId);
+    spanReply.setAttribute('onclick', 'showReply()');
+    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('style', 'border:none');
+    iReplyCount.setAttribute('id', 'reply');
+    iReplyCount.setAttribute('class', 'w3-light-blue');
+    iReplyCount.setAttribute('style', 'border:none');
+    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('style', 'border:none');
+    spanCat.innerHTML = data[i].category;
+    pAdQuest.innerHTML = data[i].content;
+    divAdDetails.appendChild(spanReply);
+    divAdDetails.appendChild( iReplyCount);
+    divAdDetails.appendChild(spanSame);
+    divAdFeed.appendChild(spanCat)
+    divAdFeed.appendChild(pAdQuest);
+    divAdFeed.appendChild(divAdDetails);
+    // iReplyCount.innerHTML = (data.length);
+    spanReply.innerText = 'Advice';
+    spanSame.innerText = 'Same here';
+    spanSame.appendChild(iSameCount);
+    iSameCount.innerHTML = data.length;
+    iSameCount.setAttribute('id', 'same');
+    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('style', 'border:none');
+    document.getElementById('advicefeed').appendChild(divAdFeed);
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+  }
+}
 
 
 

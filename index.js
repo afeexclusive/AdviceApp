@@ -46,6 +46,7 @@ app.listen(3000, () => {
  app.post('/question', advices.create); // Create a new Advice
  app.get('/question', advices.findAll); // Retrieve all Notes
  app.get('/question/:questionId', advices.findOne);  // Retrieve a single Advice with adviceId
+ app.get('/questioncat/:Id', advices.findCate); // Retrieve all reply in particular category
  app.put('/question/:questionId', advices.update);  // Update a Advice with adviceId
  app.delete('/question/:questionId', advices.delete);  // Delete a Advice with adviceId
 
