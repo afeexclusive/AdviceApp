@@ -110,6 +110,38 @@ exports.update = (req, res) => {
     });
 };
 
+
+// Update a question identified by the questionId in the request
+exports.updateSame = (req, res) => {
+    
+    // Find the question and update the 'same' field
+    Advice.findByIdAndUpdate(req.params.sameId, {
+            $set:{
+                same: req.body.same
+            }
+    })
+    .then(advice => {
+        if(!advice) {
+            return res.status(404).send({
+                message: "Advice not found with id " + req.params.sameId
+            });
+        }
+        res.status(200).send(advice);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Advice not found with id " + req.params.sameId
+            });                
+        }
+        return res.status(500).send({
+            message: "Error updating advice with id " + req.params.sameId
+        });
+    });
+};
+
+
+
+
 // Delete a note with the specified noteId in the request
 exports.delete = (req, res) => {
     Advice.findByIdAndRemove(req.params.questionId)

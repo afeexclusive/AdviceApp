@@ -31,14 +31,15 @@
         </div>
         <div class="myheight-100 mywidth-100 bigscr" style="position:fixed; background-color:royalblue" id="main">
         
-            <div  id="divheading" class="w3-card-4 w3-round-xlarge w3-center repstn mywidth-80">
+            <div  id="divheading" class="w3-round-xlarge w3-center repstn mywidth-80">
                 <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
             </div> <br>
             <div class="w3-container w3-card-4 w3-indigo w3-center mywidth-90" style="margin: auto;">
                 <h1>Ask Advice</h1>
                 <input type="text" placeholder="Category" class="w3-input" id="cate" onchange="textCase()"> <br>
                 <textarea name="" id="askadv" cols="30" rows="7" class="w3-input" placeholder="Question" ></textarea> <br>
-                <button class="w3-button w3-teal " onclick="postQuestion()">Submit</button>
+                <button id="submitquest" class="w3-button w3-teal " onclick="postQuestion()">Submit</button>
+                <button id="refreshsubmit" class="w3-button w3-teal " style="display: none; margin: auto" onclick="refreshAsk()">Ask Another</button>
                 <br>
                 <p></p>
             </div>
@@ -46,7 +47,10 @@
         </div>
     
     <footer class="w3-container w3-black w3-bottom"> 
-            <div class="w3-container w3-brown w3-center mywidth-100" style="margin-bottom:2px; font-size: small;"> Disclaimer </div>
+            <div class="w3-container w3-brown w3-center mywidth-100 w3-tooltip" style="margin-bottom:2px; font-size: small;">
+                 Disclaimer:
+                 <p class="w3-text w3-small">The advices here are only the opinions of the posters and not in anyway endosed by us. Consult wisely.</p>
+             </div>
     </footer>
      
     <script src="homepage.js"></script>

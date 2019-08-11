@@ -53,20 +53,24 @@ function changetheme(){
       let iReplyCount = document.createElement('button');
       let spanSame = document.createElement('button');
       let iSameCount = document.createElement('button');
-      let replyId = data[i].parentId;
+           let replyId = data[i].parentId;
+      let questId = data[i]._id;
       divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
       pAdQuest.setAttribute('id', 'adquest');
-      spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4')
+
+      spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
       spanReply.setAttribute('id', replyId);
       spanReply.setAttribute('onclick', 'showReply()');
-      spanReply.setAttribute('class', 'w3-white');
+      spanReply.setAttribute('class', 'w3-light-blue');
       spanReply.setAttribute('style', 'border:none');
       iReplyCount.setAttribute('id', 'reply');
       iReplyCount.setAttribute('class', 'w3-light-blue');
       iReplyCount.setAttribute('style', 'border:none');
-      spanSame.setAttribute('class', 'w3-right w3-white');
+      spanSame.setAttribute('class', 'w3-right w3-light-blue');
       spanSame.setAttribute('style', 'border:none');
-      spanCat.innerHTML = data[i].category
+      spanSame.setAttribute('id', questId);
+      spanSame.setAttribute('onclick', 'loadSameCount()');
+      spanCat.innerHTML = data[i].category;
       pAdQuest.innerHTML = data[i].content;
       divAdDetails.appendChild(spanReply);
       divAdDetails.appendChild( iReplyCount);
@@ -78,9 +82,19 @@ function changetheme(){
       spanReply.innerText = 'Advice';
       spanSame.innerText = 'Same here';
       spanSame.appendChild(iSameCount);
-      iSameCount.innerHTML = data.length;
+      let sam = data[i].same;
+      if (sam.length>3){
+        iSameCount.innerHTML = '1k+';
+      }else if(sam.length>2){
+        iSameCount.innerHTML = '1h+';
+      }else{
+        iSameCount.innerHTML = sam;
+      }
+
+
+      iReplyCount.innerHTML = '...';
       iSameCount.setAttribute('id', 'same');
-      iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+      iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
       iSameCount.setAttribute('style', 'border:none');
       document.getElementById('advicefeed').appendChild(divAdFeed);
       document.getElementById("main").style.marginLeft = "0%";
@@ -90,9 +104,28 @@ function changetheme(){
   }
 
 
+  function loadSameCount(){
+    let sameId = document.activeElement.id;
+    let currentEl = document.activeElement.firstElementChild;
+    let sameValue = (parseInt(currentEl.innerHTML) + 1).toString();
+    let objsame = {
+      same:sameValue,
+    };
+    let url = 'http://localhost:3000/samehere'+ '/'+sameId;
+    fetch(url,{
+    headers: { 'Content-Type':'application/json'},
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(objsame)
+  });
+  location.reload()
+    // alert(sameValue);
+  }
+
 const showReply = async() => {
   document.getElementById('replyhere'). innerHTML = ''
   document.getElementById('adreply').style.display = 'block';
+  document.getElementById('advicefeed').style.display = 'none';
   let adId = document.activeElement.id;
   document.getElementById('parentidholder').innerText = adId
   let url = 'http://localhost:3000/advicereply'+ '/'+adId;
@@ -102,12 +135,13 @@ const showReply = async() => {
     document.getElementById('replyhere').innerHTML = 'No advice here yet. You can post your advice below.';
   }else{
     let table = document.createElement('table');
-  table.setAttribute('id', 'replies');
-  let row = table.insertRow();
-  for(var i=0; i<data.length; i++){
-    let cell = row.insertCell();
-    cell.innerHTML = data[i].content
-    row = table.insertRow();
+    table.setAttribute('id', 'replies');
+    table.setAttribute('class', 'w3-text-white')
+    let row = table.insertRow();
+    for(var i=0; i<data.length; i++){
+      let cell = row.insertCell();
+      cell.innerHTML = data[i].content
+      row = table.insertRow();
   };
   document.getElementById('replyhere').appendChild(table);
   }
@@ -116,15 +150,21 @@ const showReply = async() => {
 function closeReply(){
   document.getElementById('adreply').style.display = 'none';
   document.getElementById('parentidholder').innerText = '';
+  document.activeElement.id = 'sendreply';;
+  document.getElementById('advicefeed').style.display = 'block';
+  location.reload();
+  // document.getElementById('advtext').setAttribute('placeholder', 'What\'s your advice (128 chr)');
 }
 
 function postQuestion(){
   let category = document.getElementById('cate').value;
-  let adQuestion = document.getElementById('askadv').value
+  let adQuestion = document.getElementById('askadv').value;
+  let same = '0';
 
   let problem = {
     category: category,
-    content: adQuestion
+    content: adQuestion,
+    same: same
   };
   fetch('http://localhost:3000/question',{
     headers: { 'Content-Type':'application/json'},
@@ -132,27 +172,49 @@ function postQuestion(){
     mode: 'cors',
     body: JSON.stringify(problem)
   });
-  document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice'
+  document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice';
+  document.getElementById('submitquest').style.display = 'none';
+  document.getElementById('refreshsubmit').style.display = 'block';
   // document.getElementById('msg').innerHTML = document.getElementById('cate').value;
 }
 
-function postAdvice(){
+function refreshAsk(){
+  location.reload();
+}
+
+const postAdvice = async() => {
   let replyId = document.getElementById('parentidholder').innerText
   let content = document.getElementById('advtext').value;
-  
+
+  if(content == ''){
+    document.getElementById('advtext').style.color='red';
+    document.getElementById('advtext').value= 'Can not post empty reply';
+  }else{
   let advobj = {
     parentId: replyId,
     content: content
   };
-  fetch('http://localhost:3000/advices',{
+  const response = await fetch('http://localhost:3000/advices',{
     headers: { 'Content-Type':'application/json'},
     method: 'POST',
     mode: 'cors',
     body: JSON.stringify(advobj)
-  });
-  document.activeElement.id = 'sendreply';
-  document.getElementById('advtext').value = '';
-}
+  })
+  const data = await response.json();
+  let table = document.createElement('table');
+  table.setAttribute('id', 'replies');
+  table.setAttribute('style', 'background-color:inherit');
+  let row = table.insertRow();
+  for(var i=0; i<data.length; i++){
+    let cell = row.insertCell();
+    cell.innerHTML = data[i].content
+    row = table.insertRow();
+};
+document.getElementById('replyhere').appendChild(table);
+};
+location.reload();
+};
+
 
 function textCase(){
   let cateText = document.getElementById('cate').value;
@@ -176,19 +238,23 @@ const selectFaith = async() => {
     let iReplyCount = document.createElement('button');
     let spanSame = document.createElement('button');
     let iSameCount = document.createElement('button');
-    let replyId = data[i].parentId;
+         let replyId = data[i].parentId;
+    let questId = data[i]._id;
     divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
     pAdQuest.setAttribute('id', 'adquest');
+
     spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
     spanReply.setAttribute('id', replyId);
     spanReply.setAttribute('onclick', 'showReply()');
-    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('class', 'w3-light-blue');
     spanReply.setAttribute('style', 'border:none');
     iReplyCount.setAttribute('id', 'reply');
     iReplyCount.setAttribute('class', 'w3-light-blue');
     iReplyCount.setAttribute('style', 'border:none');
-    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('class', 'w3-right w3-light-blue');
     spanSame.setAttribute('style', 'border:none');
+    spanSame.setAttribute('id', questId);
+    spanSame.setAttribute('onclick', 'loadSameCount()');
     spanCat.innerHTML = data[i].category;
     pAdQuest.innerHTML = data[i].content;
     divAdDetails.appendChild(spanReply);
@@ -201,14 +267,22 @@ const selectFaith = async() => {
     spanReply.innerText = 'Advice';
     spanSame.innerText = 'Same here';
     spanSame.appendChild(iSameCount);
-    iSameCount.innerHTML = data.length;
+    let sam = data[i].same;
+    if (sam.length>3){
+      iSameCount.innerHTML = '1k+';
+    }else if(sam.length>2){
+      iSameCount.innerHTML = '1h+';
+    }else{
+      iSameCount.innerHTML = sam;
+    }
+    iReplyCount.innerHTML = '...';
     iSameCount.setAttribute('id', 'same');
-    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
     iSameCount.setAttribute('style', 'border:none');
     document.getElementById('advicefeed').appendChild(divAdFeed);
     document.getElementById("main").style.marginLeft = "0%";
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("openNav").style.display = "inline-block";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
   }
 }
 
@@ -225,19 +299,23 @@ const selectLove = async() => {
     let iReplyCount = document.createElement('button');
     let spanSame = document.createElement('button');
     let iSameCount = document.createElement('button');
-    let replyId = data[i].parentId;
+         let replyId = data[i].parentId;
+    let questId = data[i]._id;
     divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
     pAdQuest.setAttribute('id', 'adquest');
+
     spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
     spanReply.setAttribute('id', replyId);
     spanReply.setAttribute('onclick', 'showReply()');
-    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('class', 'w3-light-blue');
     spanReply.setAttribute('style', 'border:none');
     iReplyCount.setAttribute('id', 'reply');
     iReplyCount.setAttribute('class', 'w3-light-blue');
     iReplyCount.setAttribute('style', 'border:none');
-    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('class', 'w3-right w3-light-blue');
     spanSame.setAttribute('style', 'border:none');
+    spanSame.setAttribute('id', questId);
+    spanSame.setAttribute('onclick', 'loadSameCount()');
     spanCat.innerHTML = data[i].category;
     pAdQuest.innerHTML = data[i].content;
     divAdDetails.appendChild(spanReply);
@@ -250,14 +328,22 @@ const selectLove = async() => {
     spanReply.innerText = 'Advice';
     spanSame.innerText = 'Same here';
     spanSame.appendChild(iSameCount);
-    iSameCount.innerHTML = data.length;
+    let sam = data[i].same;
+    if (sam.length>3){
+      iSameCount.innerHTML = '1k+';
+    }else if(sam.length>2){
+      iSameCount.innerHTML = '1h+';
+    }else{
+      iSameCount.innerHTML = sam;
+    }
+    iReplyCount.innerHTML = '...';
     iSameCount.setAttribute('id', 'same');
-    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
     iSameCount.setAttribute('style', 'border:none');
     document.getElementById('advicefeed').appendChild(divAdFeed);
     document.getElementById("main").style.marginLeft = "0%";
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("openNav").style.display = "inline-block";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
   }
 }
 
@@ -274,19 +360,23 @@ const selectEdu = async() => {
     let iReplyCount = document.createElement('button');
     let spanSame = document.createElement('button');
     let iSameCount = document.createElement('button');
-    let replyId = data[i].parentId;
+         let replyId = data[i].parentId;
+    let questId = data[i]._id;
     divAdFeed.setAttribute('class', 'w3-white w3-border-bottom w3-padding');
     pAdQuest.setAttribute('id', 'adquest');
+
     spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
     spanReply.setAttribute('id', replyId);
     spanReply.setAttribute('onclick', 'showReply()');
-    spanReply.setAttribute('class', 'w3-white');
+    spanReply.setAttribute('class', 'w3-light-blue');
     spanReply.setAttribute('style', 'border:none');
     iReplyCount.setAttribute('id', 'reply');
     iReplyCount.setAttribute('class', 'w3-light-blue');
     iReplyCount.setAttribute('style', 'border:none');
-    spanSame.setAttribute('class', 'w3-right w3-white');
+    spanSame.setAttribute('class', 'w3-right w3-light-blue');
     spanSame.setAttribute('style', 'border:none');
+    spanSame.setAttribute('id', questId);
+    spanSame.setAttribute('onclick', 'loadSameCount()');
     spanCat.innerHTML = data[i].category;
     pAdQuest.innerHTML = data[i].content;
     divAdDetails.appendChild(spanReply);
@@ -299,14 +389,22 @@ const selectEdu = async() => {
     spanReply.innerText = 'Advice';
     spanSame.innerText = 'Same here';
     spanSame.appendChild(iSameCount);
-    iSameCount.innerHTML = data.length;
+    let sam = data[i].same;
+    if (sam.length>3){
+      iSameCount.innerHTML = '1k+';
+    }else if(sam.length>2){
+      iSameCount.innerHTML = '1h+';
+    }else{
+      iSameCount.innerHTML = sam;
+    }
+    iReplyCount.innerHTML = '...';
     iSameCount.setAttribute('id', 'same');
-    iSameCount.setAttribute('class', 'w3-badge w3-light-blue');
+    iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
     iSameCount.setAttribute('style', 'border:none');
     document.getElementById('advicefeed').appendChild(divAdFeed);
     document.getElementById("main").style.marginLeft = "0%";
-    document.getElementById("mySidebar").style.display = "none";
-    document.getElementById("openNav").style.display = "inline-block";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
   }
 }
 
@@ -366,3 +464,22 @@ const selectEdu = async() => {
   //     }
   //   });
   // };
+
+  // function postAdvice(){
+//   let replyId = document.getElementById('parentidholder').innerText
+//   let content = document.getElementById('advtext').value;
+  
+//   let advobj = {
+//     parentId: replyId,
+//     content: content
+//   };
+//   fetch('http://localhost:3000/advices',{
+//     headers: { 'Content-Type':'application/json'},
+//     method: 'POST',
+//     mode: 'cors',
+//     body: JSON.stringify(advobj)
+//   });
+//   document.getElementById('replyhere').appendChild(table);
+//   document.getElementById('advtext').value = '';
+  
+// }
