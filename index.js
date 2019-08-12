@@ -14,6 +14,7 @@ app.use(function(req, res, next) {
   });
 
 // parse requests of content-type - application/json
+app.use(express.static(__dirname+ "/UI"));
 app.use(bodyParser.json())
 const dbConfig = require('./config/db.js');
 const mongoose = require('mongoose');
