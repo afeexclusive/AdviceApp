@@ -311,8 +311,8 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   }
   
   #replies td {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid rgb(5, 32, 185);
+    border-bottom: 1px solid rgb(5, 32, 185);
     padding: 8px;
   }
   

@@ -39,8 +39,9 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function(){
+    console.log('Server is listening on port' + app.get('port'));
 });
 
  app.post('/question', advices.create); // Create a new Advice
