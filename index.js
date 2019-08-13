@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
 // parse requests of content-type - application/json
 app.use(express.static(__dirname+ "/UI"));
 app.use(bodyParser.json());
-const dbConfig = require('./config/db.js');
+// const dbConfig = require('./config/db.js');
 const mongoose = require('mongoose');
 const advices = require('./src/controller/Advice.js')
 const advicereply = require('./src/controller/Advicereply.js')
@@ -24,9 +24,8 @@ const advicereply = require('./src/controller/Advicereply.js')
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(process.env.MONGOLAB_URI || dbConfig.url, {
-    useNewUrlParser: true,
-    useFindAndModify: false
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://@localhost:27017/advice-app', {
+    useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
