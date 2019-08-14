@@ -41,7 +41,7 @@ function changetheme(){
   
   const loadAdvice = async() => {
     document.getElementById('advicefeed').innerHTML = '';
-    const response = await fetch('http://localhost:3000/question');
+    const response = await fetch('https://advicemedotorg.herokuapp.com/question');
     const data = await response.json();
     
     for (var i=0; i<data.length; i++){
@@ -111,7 +111,7 @@ function changetheme(){
     let objsame = {
       same:sameValue,
     };
-    let url = 'http://localhost:3000/samehere'+ '/'+sameId;
+    let url = 'https://advicemedotorg.herokuapp.com/samehere'+ '/'+sameId;
     fetch(url,{
     headers: { 'Content-Type':'application/json'},
     method: 'POST',
@@ -128,7 +128,7 @@ const showReply = async() => {
   document.getElementById('advicefeed').style.display = 'none';
   let adId = document.activeElement.id;
   document.getElementById('parentidholder').innerText = adId
-  let url = 'http://localhost:3000/advicereply'+ '/'+adId;
+  let url = 'https://advicemedotorg.herokuapp.com/advicereply'+ '/'+adId;
   const response = await fetch(url);
   const data = await response.json();
   if (data.length === 0){
@@ -166,7 +166,7 @@ function postQuestion(){
     content: adQuestion,
     same: same
   };
-  fetch('http://localhost:3000/question',{
+  fetch('https://advicemedotorg.herokuapp.com/question',{
     headers: { 'Content-Type':'application/json'},
     method: 'POST',
     mode: 'cors',
@@ -194,7 +194,7 @@ const postAdvice = async() => {
     parentId: replyId,
     content: content
   };
-  const response = await fetch('http://localhost:3000/advices',{
+  const response = await fetch('https://advicemedotorg.herokuapp.com/advices',{
     headers: { 'Content-Type':'application/json'},
     method: 'POST',
     mode: 'cors',
@@ -227,7 +227,7 @@ function textCase(){
 
 const selectFaith = async() => {
   document.getElementById('advicefeed').innerHTML = '';
-  const response = await fetch('http://localhost:3000/questioncat/Faith');
+  const response = await fetch('https://advicemedotorg.herokuapp.com/questioncat/Faith');
   const data = await response.json();
   for (var i=0; i<data.length; i++){
     let divAdFeed = document.createElement('div');
@@ -288,7 +288,7 @@ const selectFaith = async() => {
 
 const selectLove = async() => {
   document.getElementById('advicefeed').innerHTML = '';
-  const response = await fetch('http://localhost:3000/questioncat/Love');
+  const response = await fetch('https://advicemedotorg.herokuapp.com/questioncat/Love');
   const data = await response.json();
   for (var i=0; i<data.length; i++){
     let divAdFeed = document.createElement('div');
@@ -349,7 +349,7 @@ const selectLove = async() => {
 
 const selectEdu = async() => {
   document.getElementById('advicefeed').innerHTML = '';
-  const response = await fetch('http://localhost:3000/questioncat/Education');
+  const response = await fetch('https://advicemedotorg.herokuapp.com/questioncat/Education');
   const data = await response.json();
   for (var i=0; i<data.length; i++){
     let divAdFeed = document.createElement('div');
@@ -451,7 +451,7 @@ const selectEdu = async() => {
   //     mode: 'no-cors', //cors, same-origin, no-cors
   //   }
 
-  //   fetch('http://localhost:3000/question', option)
+  //   fetch('https://advicemedotorg.herokuapp.com/question', option)
   //   .then(response => response.json())
   //   .then((data) => {
   //     let table = document.createElement('table');
@@ -473,7 +473,7 @@ const selectEdu = async() => {
 //     parentId: replyId,
 //     content: content
 //   };
-//   fetch('http://localhost:3000/advices',{
+//   fetch('https://advicemedotorg.herokuapp.com/advices',{
 //     headers: { 'Content-Type':'application/json'},
 //     method: 'POST',
 //     mode: 'cors',
