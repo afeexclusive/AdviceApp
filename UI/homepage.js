@@ -160,7 +160,11 @@ function postQuestion(){
   let category = document.getElementById('cate').value;
   let adQuestion = document.getElementById('askadv').value;
   let same = '0';
-
+  if(!category || !adQuestion){
+    document.getElementById('msg').style.color = 'yellow';
+    document.getElementById('msg').style.backgroundColor = 'red';
+    document.getElementById('msg').innerHTML = '*Fill all required fields';
+  }else{
   let problem = {
     category: category,
     content: adQuestion,
@@ -172,10 +176,12 @@ function postQuestion(){
     mode: 'cors',
     body: JSON.stringify(problem)
   });
+  document.getElementById('msg').style.color = 'white' ;
   document.getElementById('msg').innerHTML = 'Your Question has been posted check back soon for advice';
   document.getElementById('submitquest').style.display = 'none';
   document.getElementById('refreshsubmit').style.display = 'block';
   // document.getElementById('msg').innerHTML = document.getElementById('cate').value;
+}
 }
 
 function refreshAsk(){
@@ -345,6 +351,10 @@ const selectLove = async() => {
   document.getElementById("mySidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
   }
+}
+
+const displayCatDiv = ()=> {
+  document.getElementById('showcategory').style.display = 'block';
 }
 
 const selectEdu = async() => {
