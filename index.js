@@ -24,7 +24,7 @@ const advicereply = require('./src/controller/Advicereply.js')
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://0.0.0.0:27017/advice-app', {
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://0.0.0.0:27017/adviceme-app', {
     useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");    
