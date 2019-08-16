@@ -20,7 +20,7 @@
                 <input type="checkbox" id="chk" onchange="changetheme()"/>
                 <span class="slider round"></span>
             </label>
-            <button id="openNav" class="w3-button w3-text-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+            <button id="openNav" class="w3-button w3-text-white w3-xlarge" onclick="w3_open()">&#9776;</button>
         </div>
         <div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-blue w3-right" style="display:none; height: fit-content" id="mySidebar">
             <button class="w3-bar-item w3-button w3-border-bottom w3-large material-icons" onclick="w3_close()">arrow_back</button>
@@ -36,8 +36,8 @@
                 <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
             </div>
         <div id="tym" style="font-size: 20px; margin:auto;" class="mywidth-30 w3-teal w3-center"></div>
-        <div>
-            <br> <br>
+        <div style="overflow:scroll">
+            <br>
             <div class="w3-card-4 w3-teal w3-round-xlarge mywidth-80" style="margin: auto; display: flex;">
                 <div class="w3-pink w3-card-4 mywidth-10"></div>
                 <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading"><a href="askadvice.html">Ask Advice </a></div>
@@ -54,13 +54,15 @@
                 <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading" onclick="displayCatDiv()">Categories</div>
             </div>
             <div class="myheight-5" ></div>
-            <div id="showcategory" class="w3-container w3-large" style="display: none; height: fit-content; width:fit-content;">
-                <a href="advicefeeds.html" onclick="selectEdu()"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Education | </span></a>
-                <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Faith | </span></a>
-                <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Love | </span></a>
-                <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Parenting | </span></a>
-                <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Marriage | </span></a>
+            <div>
+                <div id="showcategory" class="w3-container w3-large" style="display: none; height: fit-content; width:fit-content;">
+                    <a href="advicefeeds.html" onclick="selectEdu()"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Education | </span></a>
+                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Faith | </span></a>
+                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Love | </span></a>
+                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Parenting | </span></a>
+                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Marriage | </span></a>
 
+                </div>
             </div>
         </div>
         
