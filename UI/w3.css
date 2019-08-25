@@ -242,22 +242,22 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 } */
 
 /* The switch - the box around the slider */
-/* .switch {
+.switch {
     position: relative;
     display: inline-block;
     width: 30px;
     height: 16px;
-  } */
+  }
   
   /* Hide default HTML checkbox */
-  /* .switch input {
+  .switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  } */
+  }
   
   /* The slider */
-  /* .slider {
+  .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -279,9 +279,9 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  } */
+  }
   
-  /* input:checked + .slider {
+  input:checked + .slider {
     background-color: #2196F3;
   }
   
@@ -290,14 +290,14 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-    background-color: red;
-  } */
-  
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+    background-color: whitesmoke;
+  }
+
   /* Rounded sliders */
-  /* .slider.round {
+  .slider.round {
     border-radius: 34px;
   }
   
@@ -318,8 +318,12 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
   
   #replies tr:hover {
     background-color:  darkblue;
-  } */
-  
+  }
+
+.mywidth-1{width: 1%;}
+.mywidth-2{width: 2%;}  
+.mywidth-3{width: 3%;}  
+.mywidth-4{width: 4%;}
 .mywidth-5{width: 5%;}
 .mywidth-10{width: 10%;}
 .mywidth-15{width: 15%;}
@@ -362,22 +366,36 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .myheight-95{height: 95%;}
 .myheight-100{height: 100%;}
 
-/* #divheading{
+#divheading{
   margin: auto;
 }
 
+.smshow{
+  display: none;
+}
 
+.noline{
+  text-decoration: none;
+}
 
 
   @media only screen and (min-width: 900px){
-    .bigscr{width: 35%;margin-left: 60%;top: 20%;height: 60%;border-radius: 5%;}
+    .bigscr{width: 33%; margin-left: 60%; top: 20%; height: 60%; border-radius: 5%;}
     .repstn{
       position: absolute;
-      top: -32%;
+      top: -36%;
       left: -180%;
     }
+
+    /* #askmain{
+      background-color: inherit;
+    } */
+
+    .bgshow{
+      display: block;
+     }
     
     .todryt{width: 90%;}
     .my-card-4,.w3-hover-shadow:hover{box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)}
   }
- */
+

@@ -2,11 +2,30 @@
 function changetheme(){
     var chk = document.getElementById('chk');
     if(chk.checked){
-        document.getElementById('main').style.backgroundColor = 'grey';
-        document.getElementById('heading').style.color = 'white';
+        document.getElementById('main').style.backgroundColor = '#3f5168';
+        document.getElementById('fixhead').style.backgroundColor = '#3f5168';
+        document.getElementById('catheading').style.color = 'white';
     }else{
         document.getElementById('main').style.backgroundColor = 'royalblue';
-        document.getElementById('heading').style.color = 'azure';
+        document.getElementById('fixhead').style.backgroundColor = 'royalblue';
+        document.getElementById('catheading').style.color = 'azure';
+    }
+}
+
+const askchangetheme = () => {
+  var askchk = document.getElementById('askchk');
+    if(askchk.checked){
+        document.getElementById('askfixhead').style.backgroundColor = '#3f5168';
+        document.getElementById('askmain').style.backgroundColor = '#3f5168';
+        document.getElementById('askwrap').style.backgroundColor = 'inherit';
+        document.getElementById('bodydiv').style.backgroundColor = '#3f5168';
+        
+    }else{
+        document.getElementById('askmain').style.backgroundColor = 'royalblue';
+        document.getElementById('askfixhead').style.backgroundColor = 'darkblue';
+        document.getElementById('askwrap').style.backgroundColor = 'rgb(38, 59, 175)'
+        document.getElementById('bodydiv').style.backgroundColor = 'royalblue';
+        
     }
 }
 
@@ -355,6 +374,7 @@ const selectLove = async() => {
 
 const displayCatDiv = ()=> {
   document.getElementById('showcategory').style.display = 'block';
+  document.getElementById('catheading').style.display = 'none';
 }
 
 const selectEdu = async() => {

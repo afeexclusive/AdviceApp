@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="w3.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
-<body style="width: 100%; background-color:lightblue;" onload="startTime()">
+<body style="width: 100%; background-color:#3f5168;" onload="startTime()">
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
     
    
-        <div class="mywidth-100" style="background-color: royalblue; display: flex;">
+        <div id="fixhead" class="mywidth-100" style="background-color: royalblue; display: flex;">
             <div class="w3-left mywidth-70 todryt ">
                 <!-- <p style="color:azure; margin-left: 5%; font-size: 20px" id="heading"><b>AdviceMe</b></p> -->
             </div>
-            <label class="switch" style="top: 25px">
+            <label class="switch" style="top: 20px">
                 <input type="checkbox" id="chk" onchange="changetheme()"/>
                 <span class="slider round"></span>
             </label>
@@ -35,32 +35,33 @@
             <div  id="divheading" class=" w3-center repstn mywidth-80">
                 <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
             </div>
-        <div id="tym" style="font-size: 20px; margin:auto;" class="mywidth-30 w3-teal w3-center"></div>
-        <div style="overflow:scroll">
+            <div class="myheight-5  smshow bgshow"></div>
+        <div id="tym" style="font-size: 20px; margin:auto;" class="mywidth-40 w3-text-white w3-center w3-round-xlarge w3-border"></div>
+        <div>
             <br>
-            <div class="w3-card-4 w3-teal w3-round-xlarge mywidth-80" style="margin: auto; display: flex;">
-                <div class="w3-pink w3-card-4 mywidth-10"></div>
-                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading"><a href="askadvice.html">Ask Advice </a></div>
+            <div class="w3-round-xlarge mywidth-80" style="margin: auto; display: flex;">
+                <div class="w3-blue mywidth-3"></div>
+                <div style="color:azure; height: 5rem; font-size: 35px; margin: auto" id="heading"><a href="askadvice.html" class="noline">Ask Advice </a></div>
             </div>
 
             <br>
-            <div class="w3-card-4 w3-teal w3-round-xlarge w3-center mywidth-80" style="margin: auto; display: flex;">
-                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading"> <a href="advicefeeds.html"> Post Advice </a></div>
-                <div class="w3-pink w3-card-4 mywidth-10" style="left:15%;"></div>
+            <div class="w3-round-xlarge w3-center mywidth-80" style="margin: auto; display: flex;">
+                <div style="color:azure; height: 5rem; font-size: 35px; margin: auto" id="heading"> <a href="advicefeeds.html" class="noline"> Post Advice </a></div>
+                <div class="w3-blue mywidth-3" style="left:15%;"></div>
             </div>
             <br>
-            <div class="w3-card-4 w3-teal w3-round-xlarge mywidth-80" style="margin: auto; display: flex;">
-                <div class="w3-pink w3-card-4 mywidth-10"></div>
-                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" id="heading" onclick="displayCatDiv()">Categories</div>
+            <div id="catheading" class="w3-card-4 w3-round-xlarge mywidth-80" style="margin: auto; display: flex;">
+                <div class="mywidth-10"></div>
+                <div style="color:azure; height: 3.8rem; font-size: 35px; margin: auto" onclick="displayCatDiv()">Categories</div>
             </div>
             <div class="myheight-5" ></div>
             <div>
-                <div id="showcategory" class="w3-container w3-large" style="display: none; height: fit-content; width:fit-content;">
-                    <a href="advicefeeds.html" onclick="selectEdu()"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Education | </span></a>
-                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Faith | </span></a>
-                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Love | </span></a>
-                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Parenting | </span></a>
-                    <a href="advicefeeds.html"><span class="w3-white w3-text-blue" style="height: fit-content; width:fit-content;">Marriage | </span></a>
+                <div id="showcategory" class="w3-container w3-large" style="margin: auto; display: none; height: fit-content; width:fit-content;">
+                    <a href="advicefeeds.html" onclick="selectEdu()" class="noline" ><span class="w3-text-white w3-border w3-round-xlarge w3-btn-small" style="width:fit-content;">--Education--</span></a>
+                    <a href="advicefeeds.html" class="noline"><span class="w3-text-white w3-border w3-round-xlarge w3-btn-small" style=" width:fit-content;">--Faith--</span></a><br>
+                    <a href="advicefeeds.html" class="noline"><span class="w3-text-white w3-border w3-round-xlarge w3-btn-small" style="width:fit-content;">--Love--</span></a>
+                    <a href="advicefeeds.html" class="noline"><span class="w3-text-white w3-border w3-round-xlarge w3-btn-small" style="width:fit-content;">--Parenting--</span></a><br>
+                    <a href="advicefeeds.html" class="noline"><span class="w3-text-white w3-border w3-round-xlarge w3-btn-small" style="width:fit-content;">--Marriage--</span></a>
 
                 </div>
             </div>
@@ -70,9 +71,12 @@
     </div>
     
     
-        <footer class="w3-container w3-border-top w3-bottom">
-             <p class="w3-justify w3-text-white mywidth-100" style="background-color:royalblue; margin-bottom:2px; font-size: small;"> Disclaimer: The advices here are only the opinions of the posters and not in anyway endosed by us. Consult wisely. </p>
-        </footer>
+    <footer class="w3-container w3-grey w3-bottom"> 
+        <div id="dis" class="w3-container w3-grey w3-center w3-tooltip" style="margin-bottom:2px; font-size: small; width:100%">
+            Disclaimer:
+            <p class="w3-text w3-small">The advices here are only the opinions of the posters and not in anyway endosed by us. Consult wisely.</p>
+        </div>
+    </footer>
      
     <script src="homepage.js"></script>
 </body>

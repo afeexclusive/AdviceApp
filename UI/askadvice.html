@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="w3.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
-<body style="width: 100%; background-color:royalblue;">
+<body>
     <!-- <header class="w3-container w3-black"> <time class="w3-right">12:30</time> <i class="material-icons w3-right" style="widows: 20px;">battery_std</i> <i class="material-icons w3-right" style="widows: 20px;">network_cell</i> <i class="material-icons w3-right" style="widows: 20px;">network_wifi</i> </header> -->
+  <div class="mywidth-100 myheight-100" style="background-color:royalblue" id="bodydiv">  
     
-    
-        <div class="mywidth-100" style="background-color: darkblue; display: flex">
+        <div id="askfixhead" class="mywidth-100" style="background-color: darkblue; display: flex">
             <div class="w3-left mywidth-70 todryt">
                 <!-- <p style="color:azure; margin-left: 5%; font-size: 20px" id="heading"><b>AdviceMe</b></p> -->
             </div>
-            <label class="switch" style="top: 25px">
-                <input type="checkbox" id="chk" onchange="changetheme()"/>
+            <label class="switch" style="top: 14px">
+                <input type="checkbox" id="askchk" onchange="askchangetheme()"/>
                 <span class="slider round"></span>
             </label>
             <button id="openNav" class="w3-button w3-text-white" onclick="w3_open()">&#9776;</button>
@@ -29,12 +29,12 @@
                 <a href="askadvice.html" class="w3-bar-item w3-border-bottom  w3-button">Ask</a>
                 <a href="advicefeeds.html" class="w3-bar-item w3-border-bottom  w3-button">Post</a>
         </div>
-        <div class="myheight-100 mywidth-100 bigscr" style="position:fixed; background-color:royalblue" id="main">
+        <div class="myheight-100 mywidth-100 bigscr" style="position:fixed;" id="askmain">
         
             <div  id="divheading" class="w3-round-xlarge w3-center repstn mywidth-80">
                 <h1 style="color:azure" id="heading"><b>AdviceMe.org</b></h1>
             </div>
-            <div class="w3-container w3-card-4 w3-indigo w3-center mywidth-90" style="margin: auto;">
+            <div id="askwrap" class="w3-container w3-text-white w3-card-4 w3-center mywidth-90" style="margin: auto; background-color: rgb(38, 59, 175) ;">
                 <h1>Ask Advice</h1>
                 <input type="text" placeholder="Category" class="w3-input" id="cate" onchange="textCase()"> <br>
                 <textarea name="" id="askadv" cols="30" rows="5" class="w3-input" placeholder="Question" ></textarea> <br>
@@ -52,7 +52,7 @@
                  <p class="w3-text w3-small">The advices here are only the opinions of the posters and not in anyway endosed by us. Consult wisely.</p>
              </div>
     </footer>
-     
+</div>
     <script src="homepage.js"></script>
 </body>
 </html>
