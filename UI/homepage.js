@@ -109,8 +109,6 @@ const askchangetheme = () => {
       }else{
         iSameCount.innerHTML = sam;
       }
-
-
       iReplyCount.innerHTML = '...';
       iSameCount.setAttribute('id', 'same');
       iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
@@ -148,6 +146,7 @@ const showReply = async() => {
   let adId = document.activeElement.id;
   document.getElementById('parentidholder').innerText = adId
   let url = 'https://advicemedotorg.herokuapp.com/advicereply'+ '/'+adId;
+  document.getElementById('iupdate').innerText = url;
   const response = await fetch(url);
   const data = await response.json();
   if (data.length === 0){
@@ -171,7 +170,7 @@ function closeReply(){
   document.getElementById('parentidholder').innerText = '';
   document.activeElement.id = 'sendreply';;
   document.getElementById('advicefeed').style.display = 'block';
-  location.reload();
+  // location.reload();
   // document.getElementById('advtext').setAttribute('placeholder', 'What\'s your advice (128 chr)');
 }
 
@@ -208,6 +207,7 @@ function refreshAsk(){
 }
 
 const postAdvice = async() => {
+  document.getElementById('replyhere').innerHTML = ''
   let replyId = document.getElementById('parentidholder').innerText
   let content = document.getElementById('advtext').value;
 
@@ -225,10 +225,13 @@ const postAdvice = async() => {
     mode: 'cors',
     body: JSON.stringify(advobj)
   })
-  const data = await response.json();
+  let geturl = document.getElementById('iupdate').innerText;
+  const updateresp = await fetch(geturl);
+  const data = await updateresp.json();
   let table = document.createElement('table');
   table.setAttribute('id', 'replies');
   table.setAttribute('style', 'background-color:inherit');
+  table.setAttribute('class', 'w3-text-white');
   let row = table.insertRow();
   for(var i=0; i<data.length; i++){
     let cell = row.insertCell();
@@ -236,8 +239,9 @@ const postAdvice = async() => {
     row = table.insertRow();
 };
 document.getElementById('replyhere').appendChild(table);
+document.getElementById('advtext').value = '';
 };
-location.reload();
+// location.reload();
 };
 
 
