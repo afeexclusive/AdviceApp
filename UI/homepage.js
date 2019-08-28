@@ -85,7 +85,7 @@ const askchangetheme = () => {
       iReplyCount.setAttribute('id', 'reply');
       iReplyCount.setAttribute('class', 'w3-light-blue');
       iReplyCount.setAttribute('style', 'border:none');
-      spanSame.setAttribute('class', 'w3-right w3-light-blue');
+      spanSame.setAttribute('class', 'w3-right w3-light-blue material-icons');
       spanSame.setAttribute('style', 'border:none');
       spanSame.setAttribute('id', questId);
       spanSame.setAttribute('onclick', 'loadSameCount()');
