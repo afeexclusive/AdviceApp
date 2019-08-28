@@ -99,7 +99,7 @@ const askchangetheme = () => {
       divAdFeed.appendChild(divAdDetails);
       // iReplyCount.innerHTML = (data.length);
       spanReply.innerText = 'Advice';
-      spanSame.innerText = 'Same here';
+      spanSame.innerText = 'favorite';
       spanSame.appendChild(iSameCount);
       let sam = data[i].same;
       if (sam.length>3){
