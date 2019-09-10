@@ -80,7 +80,7 @@ const askchangetheme = () => {
       spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
       spanReply.setAttribute('id', replyId);
       spanReply.setAttribute('onclick', 'showReply()');
-      spanReply.setAttribute('class', 'w3-light-blue');
+      spanReply.setAttribute('class', 'w3-light-blue material-icons');
       spanReply.setAttribute('style', 'border:none');
       iReplyCount.setAttribute('id', 'reply');
       iReplyCount.setAttribute('class', 'w3-light-blue');
@@ -98,9 +98,9 @@ const askchangetheme = () => {
       divAdFeed.appendChild(pAdQuest);
       divAdFeed.appendChild(divAdDetails);
       // iReplyCount.innerHTML = (data.length);
-      spanReply.innerText = 'Advice';
+      spanReply.innerText = 'message';
       spanSame.innerText = 'favorite';
-      spanSame.appendChild(iSameCount);
+      divAdDetails.appendChild(iSameCount);
       let sam = data[i].same;
       if (sam.length>3){
         iSameCount.innerHTML = '1k+';
