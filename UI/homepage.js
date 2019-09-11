@@ -70,7 +70,7 @@ const askchangetheme = () => {
       let divAdDetails = document.createElement('div');
       let spanReply = document.createElement('button');
       let iReplyCount = document.createElement('button');
-      let spanSame = document.createElement('button');
+      let spanSame = document.createElement('span');
       let iSameCount = document.createElement('button');
            let replyId = data[i].parentId;
       let questId = data[i]._id;
@@ -83,7 +83,7 @@ const askchangetheme = () => {
       spanReply.setAttribute('class', ' w3-white material-icons');
       spanReply.setAttribute('style', 'border:none');
       iReplyCount.setAttribute('id', 'reply');
-      iReplyCount.setAttribute('class', 'w3-light-blue');
+      iReplyCount.setAttribute('class', 'w3-white');
       iReplyCount.setAttribute('style', 'border:none');
       spanSame.setAttribute('class', 'w3-white w3-right material-icons');
       spanSame.setAttribute('style', 'border:none');
