@@ -103,16 +103,16 @@ const askchangetheme = () => {
       spanSame.appendChild(iSameCount);
       let sam = data[i].same;
       if (sam.length>3){
-        iSameCount.innerHTML = '1k+';
+        iSameCount.innerText = '1k+';
       }else if(sam.length>2){
-        iSameCount.innerHTML = '1h+';
+        iSameCount.innerText = '1h+';
       }else{
-        iSameCount.innerHTML = sam;
+        iSameCount.innerText = sam;
       }
       iReplyCount.innerHTML = '';
       iSameCount.setAttribute('id', 'same');
       iSameCount.setAttribute('class', 'w3-right w3-badge w3-red w3-small');
-      iSameCount.setAttribute('style', 'border:none');
+      iSameCount.setAttribute('style', 'border:none; font-size:5px');
       document.getElementById('advicefeed').appendChild(divAdFeed);
       document.getElementById("main").style.marginLeft = "0%";
     document.getElementById("mySidebar").style.display = "none";
