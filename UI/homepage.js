@@ -80,12 +80,12 @@ const askchangetheme = () => {
       spanCat.setAttribute('class', 'w3-text-indigo w3-large w3-card-4');
       spanReply.setAttribute('id', replyId);
       spanReply.setAttribute('onclick', 'showReply()');
-      spanReply.setAttribute('class', 'material-icons');
+      spanReply.setAttribute('class', ' w3-white material-icons');
       spanReply.setAttribute('style', 'border:none');
       iReplyCount.setAttribute('id', 'reply');
       iReplyCount.setAttribute('class', 'w3-light-blue');
       iReplyCount.setAttribute('style', 'border:none');
-      spanSame.setAttribute('class', 'w3-right material-icons');
+      spanSame.setAttribute('class', 'w3-white w3-right material-icons');
       spanSame.setAttribute('style', 'border:none');
       spanSame.setAttribute('id', questId);
       spanSame.setAttribute('onclick', 'loadSameCount()');
@@ -100,7 +100,7 @@ const askchangetheme = () => {
       // iReplyCount.innerHTML = (data.length);
       spanReply.innerText = 'message';
       spanSame.innerText = 'favorite';
-      spanSame.appendChild(iSameCount);
+      divAdDetails.appendChild(iSameCount);
       let sam = data[i].same;
       if (sam.length>3){
         iSameCount.innerHTML = '1k+';
@@ -111,7 +111,7 @@ const askchangetheme = () => {
       }
       iReplyCount.innerHTML = '';
       iSameCount.setAttribute('id', 'same');
-      iSameCount.setAttribute('class', 'w3-badge w3-red w3-small');
+      iSameCount.setAttribute('class', 'w3-right w3-badge w3-red w3-small');
       iSameCount.setAttribute('style', 'border:none');
       document.getElementById('advicefeed').appendChild(divAdFeed);
       document.getElementById("main").style.marginLeft = "0%";
