@@ -1,7 +1,7 @@
 const Advice = require('../models/advice.js');
 const uuid = require('uuid');
 
-//******Create and Save a new Advice******
+//******Create and Save a new question******
 exports.create = (req, res) => {
     // Validate request
     if(!req.body.content) {
@@ -10,7 +10,7 @@ exports.create = (req, res) => {
         });
     }
 
-    // Create an Advice
+    // Create an question
     const advice = new Advice({
         same: req.body.same || "",
         parentId: uuid.v4(),
@@ -18,7 +18,7 @@ exports.create = (req, res) => {
         content: req.body.content
     });
 
-    // Save Advice in the database
+    // Save question in the database
     advice.save()
     .then(data => {
         res.status(201).send(data);
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
     });
 };
 
-// Retrieve and return all advice from the database.
+// Retrieve and return all question from the database.
 exports.findAll = (req, res) => {
     Advice.find()
     .then(advice => {
@@ -41,7 +41,7 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Retrieve and return category based advicereply from the database.
+// Retrieve and return category based question reply from the database.
 exports.findCate = (req, res) => {
     Advice.find({category:{$in:[Id = (req.params.Id)]}})
     .then(advice => {
@@ -53,7 +53,7 @@ exports.findCate = (req, res) => {
     });
 };
 
-// Find a single advice with a questionId
+// Find a single question with a questionId
 exports.findOne = (req, res) => {
     Advice.findById(req.params.questionId)
     .then(advice => {
@@ -76,7 +76,7 @@ exports.findOne = (req, res) => {
 };
 
 
-// Update a note identified by the noteId in the request
+// Update a question identified by the questionId in the request
 exports.update = (req, res) => {
     // Validate Request
     if(!req.body.content) {
@@ -85,7 +85,7 @@ exports.update = (req, res) => {
         });
     }
 
-    // Find advice and update it with the request body
+    // Find question and update it with the request body
     Advice.findByIdAndUpdate(req.params.questionId, {
         category: req.body.category || "Untitled Advice",
         same: req.body.same,
@@ -111,7 +111,7 @@ exports.update = (req, res) => {
 };
 
 
-// Update a question identified by the questionId in the request
+// Update a question samehere value identified by the questionId in the request
 exports.updateSame = (req, res) => {
     
     // Find the question and update the 'same' field
@@ -142,7 +142,7 @@ exports.updateSame = (req, res) => {
 
 
 
-// Delete a note with the specified noteId in the request
+// Delete a question with the specified noteId in the request
 exports.delete = (req, res) => {
     Advice.findByIdAndRemove(req.params.questionId)
     .then(advice => {
